@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Console Tricks!</title>
+</head>
+
+<body>
+
+    <p onClick="makeGreen()">×BREAK×DOWN×</p>
+
+    <script>
+        const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+        function makeGreen() {
+            const p = document.querySelector('p');
+            p.style.color = '#BADA55';
+            p.style.fontSize = '50px';
+        }
+    // Regular
+    console.log('Hey');
+
+    // Interpolated
+    console.log('Hello I am a %s', 'kitten');
+
+    // Styled
+    console.log('%c Lookadafligadariss', 'font-size: 100px; background-color: yellow; text-shadow: 3px 3px 0 purple');
+
+    // warning!
+    console.warn('OH GAWD NO');
+
+    // Error :|
+    console.error('Damn it, Bobbeh!');
+
+    // Info
+    console.info('Crocodiles are neat');
+
+    // Testing
+    const p = document.querySelector('p');
+    console.assert(p.classList.contains('no'), 'Nope, wrong.');
+
+    // clearing
+    console.clear();
+
+    // Viewing DOM Elements
+    console.log(p);
+    console.dir(p);
+
+    console.clear();
+
+    // Grouping together
+    dogs.forEach(dog => {
+        console.groupCollapsed(`${dog.name}`);
+        // console.group(`${dog.name}`);
+        console.log(`This is ${dog.name}`);
+        console.log(`${dog.name} is ${dog.years} old`);
+        console.log(`${dog.name} is ${dog.age * 7} years old in dog years`);
+        console.groupEnd(`${dog.name}`);
+    })
+    // counting
+    console.count('boi');
+    console.count('boi');
+    console.count('boi');
+    console.count('boi');
+
+    // timing
+    console.time('fetching data')
+    fetch('https://api.github.com/users/wesbos')
+        .then(data => data.json())
+        .then(data => {
+            console.timeEnd('fetching data');
+            console.log(data);
+        });
+
+    console.table(dogs);
+    </script>
+</body>
+
+</html>
